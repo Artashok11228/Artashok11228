@@ -1,28 +1,29 @@
 # Lil iLL
 
-Backend developer at **Directam**.
+Backend developer at **Directam** · Isfahan, Iran
 
-I work with PHP and Laravel. Here are a few personal projects that show how I write APIs and keep concurrent requests safe.
+I build APIs with PHP and Laravel, with a focus on correctness under concurrent requests, queues, and caching. I work in Scrum teams.
+
+**Stack:** PHP, Laravel, MySQL, Redis, Sanctum, Pest/PHPUnit
 
 ## Projects
 
 ### [appointment](https://github.com/Artashok11228/appointment)
 
-JSON API for booking appointments.
+JSON API for booking appointments, with queued email notifications and hourly scheduled jobs.
 
-- Laravel, Sanctum, OpenAPI
-- Bookings run in a database transaction with `lockForUpdate` on the service row to prevent double booking
-- Unique index on active slots as a final safety net
-- Tests run on GitHub Actions
+- Laravel, Sanctum, rate limiting, admin statistics
+- Bookings run in a transaction with `lockForUpdate` on the service row to prevent double booking
+- Concurrency test: two parallel processes book the same slot, exactly one wins
 
 ### [Url-Shortener](https://github.com/Artashok11228/Url-Shortener)
 
-URL shortener with a public redirect path and a Sanctum API.
+URL shortener with a public redirect path, a web dashboard, and a Sanctum API.
 
-- Laravel, Redis cache, queued click tracking
-- Soft delete, expiry, and ownership policies
-- OpenAPI docs and CI tests
+- Laravel, Redis cache, queued click tracking with retries
+- Ownership policies, link expiry (`410`), OpenAPI docs, CI on GitHub Actions
+- Removed N+1 queries on the dashboard (41 queries down to 2)
 
 ### [appointment-front-end](https://github.com/Artashok11228/appointment-front-end)
 
-React frontend for the appointment API.
+React client for the appointment API, built with AI assistance as a demo UI.
