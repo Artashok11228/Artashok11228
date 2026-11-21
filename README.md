@@ -1,29 +1,28 @@
-# توسعه‌دهنده در Directam
+# Lil iLL
 
-برای استخدام، اول تجربهٔ کاری را بخوان. ریپوهای پایین نمونهٔ شخصی‌اند و جای سابقهٔ کار را نمی‌گیرند.
+Backend developer at **Directam**.
 
-## تجربهٔ کاری
+I work with PHP and Laravel. Here are a few personal projects that show how I write APIs and keep concurrent requests safe.
 
-**Directam** — کار فعلی.
+## Projects
 
-جزئیات نقش و کارهایی که آنجا انجام شده را در رزومه و مصاحبه می‌گویم. برای بازار اصفهان این بخش از پروژه‌های گیت‌هاب مهم‌تر است.
+### [appointment](https://github.com/Artashok11228/appointment)
 
-## پروژه‌ها
+JSON API for booking appointments.
 
-### [Appointment](https://github.com/Artashok11228/appointment)
+- Laravel, Sanctum, OpenAPI
+- Bookings run in a database transaction with `lockForUpdate` on the service row to prevent double booking
+- Unique index on active slots as a final safety net
+- Tests run on GitHub Actions
 
-`API` رزرو نوبت با `Laravel` و `Sanctum`.
+### [Url-Shortener](https://github.com/Artashok11228/Url-Shortener)
 
-رزرو داخل `DB::transaction` است. قبل از چک خالی بودن اسلات، روی ردیف سرویس `lockForUpdate` گرفته می‌شود تا دو درخواست هم‌زمان هر دو اسلات را خالی نبینند. اگر این قفل رد شود، ایندکس یکتای اسلات فعال همان تداخل را به خطای `422` تبدیل می‌کند.
+URL shortener with a public redirect path and a Sanctum API.
 
-- مستندات: [`docs/openapi.yaml`](https://github.com/Artashok11228/appointment/blob/main/docs/openapi.yaml)
-- تست‌ها روی `GitHub Actions` اجرا می‌شوند. تست همزمانی واقعی گروه `mysql` است و روی `SQLite` رد می‌شود.
+- Laravel, Redis cache, queued click tracking
+- Soft delete, expiry, and ownership policies
+- OpenAPI docs and CI tests
 
-### [URL Shortener](https://github.com/Artashok11228/Url-Shortener)
+### [appointment-front-end](https://github.com/Artashok11228/appointment-front-end)
 
-کوتاه‌کنندهٔ لینک با `Laravel`: ریدایرکت عمومی، کش `Redis`، ثبت کلیک با صف، و `API` با `Sanctum`.
-
-- مستندات: [`docs/openapi.yaml`](https://github.com/Artashok11228/Url-Shortener/blob/main/docs/openapi.yaml)
-- تست‌ها روی `GitHub Actions` اجرا می‌شوند.
-
-فرانت همین رزرو نوبت: [appointment-front-end](https://github.com/Artashok11228/appointment-front-end)
+React frontend for the appointment API.
